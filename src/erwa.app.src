@@ -1,0 +1,21 @@
+%%
+%% Copyright (c) 2018 Bas Wegh
+%%
+
+{application,
+ erwa, [
+        {id, "git"},
+        {description, "cargotube erwa api"},
+        {vsn,"semver"},
+        {modules, []},
+        {registered, []},
+        {applications, [kernel,
+                        eper,
+                        stdlib,
+                        ct_gate,
+                        ct_router
+                       ]},
+        {mod, {erwa_app, []}},
+        {env, []}
+       ]
+}.
