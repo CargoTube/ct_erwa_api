@@ -16,15 +16,14 @@ get_version() ->
     ct_router:agent_identification().
 
 start_realm(Name) when is_binary(Name) ->
-    Auth = [anonymous],
-    Mapping = [{anonymous, <<"public">>}],
-    ok = cta_realm:new(Name, Auth, Mapping),
+    {ok, _} = cta_realm:new(Name),
     ok;
 start_realm(Name) when is_list(Name) ->
     start_realm(list_to_binary(Name)).
 
 
 stop_realm(Name) when is_binary(Name) ->
-    cta_realm:close(Name);
+    cta_realm:delete(Name),
+    ok;
 stop_realm(Name) when is_list(Name) ->
     stop_realm(list_to_binary(Name)).
